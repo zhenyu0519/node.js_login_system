@@ -1,0 +1,39 @@
+{
+  "name": "nodejs_login",
+  "version": "1.0.0",
+  "description": "In order to create the node.js login system faster",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/zhenyu0519/node.js_login_system.git"
+  },
+  "keywords": [
+    "node.js",
+    "login"
+  ],
+  "author": "Jeffery",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zhenyu0519/node.js_login_system/issues"
+  },
+  "homepage": "https://github.com/zhenyu0519/node.js_login_system#readme",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.15.2",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.3",
+    "ejs": "^2.5.5",
+    "express": "^4.14.0",
+    "express-session": "^1.14.2",
+    "method-override": "^2.3.7",
+    "mongoose": "^4.7.6",
+    "morgan": "^1.7.0",
+    "passport": "^0.3.2",
+    "passport-facebook": "^2.1.1",
+    "passport-google-oauth": "^1.0.0",
+    "passport-local": "^1.0.0"
+  }
+}
