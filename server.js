@@ -3,7 +3,7 @@ var express = require('express');
 var app = express();
 //This will allow you to listen to your own port number but the default will be 8080
 var port = process.env.PORT || 8080;
-var mongoose = reuqire('mongoose');
+var mongoose = require('mongoose');
 //Helps us authenticating with different methods
 var passport = require('passport');
 //Allows for passing session flashdata messages. For example the login error messages
@@ -20,6 +20,9 @@ var configDB = require('./config/database.js');
 //++++++++++++++++configuration+++++++++++++++++++++++++
 //connect the database
 mongoose.connect(configDB.url);
+
+//pass passport for configuration
+//require('./config/passport')(passport);
 
 //setup the express application
 
