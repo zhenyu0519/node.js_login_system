@@ -12,7 +12,7 @@ var flash = require('connect-flash');
 var morgan = require('morgan');
 var cookieParser = require('cookie-parser');
 //Parse body information from html form 
-var bodyPareser = require('body-parser');
+var bodyParser = require('body-parser');
 var session = require('express-session');
 
 var configDB = require('./config/database.js');
@@ -22,22 +22,26 @@ var configDB = require('./config/database.js');
 mongoose.connect(configDB.url);
 
 //pass passport for configuration
-//require('./config/passport')(passport);
+require('./config/passport')(passport);
 
 //setup the express application
 
 //create log by the dev formant
 app.use(morgan('dev'));
 app.use(cookieParser());
-app.use(bodyPareser());
+//use this instead of app.use(bodyParser())
+app.use(bodyParser.urlencoded({extended:false}))
+app.use(bodyParser.json())
+
 
 //use the ejs template as view engine
-app.set('view engine', 'ejs')
+app.set('view engine', 'ejs');
 
 //required for passport
-app.use(session({secret: 'ilovenodejs'}));
+app.use(session({secret: 'ilovescotchscotchyscotchscotch', saveUninitialized: true, resave:true}));
 app.use(passport.initialize());
 app.use(passport.session());
+
 app.use(flash());
 
 //+++++++++++++++++++++++route+++++++++++++++++++++++++++++++

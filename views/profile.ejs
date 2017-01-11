@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+    <title>Node Login System</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> <!-- load bootstrap css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> <!-- load fontawesome -->
+</head>
+<body>
+
+<!-- navbar with website name and home page only -->
+<div>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">NodeLoginSystem</a>
+            </div>
+            <ul class="nav navbar-nav">
+             <li><a href="/"><span style="color:black" class="fa fa-home"> Home</a></li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="container" style="padding-top: 80px; word-wrap: break-word;">
+
+    <div class="page-header text-center">
+        <h1><span class="fa fa-address-card" style="color:red"></span> Profile Page</h1>
+    </div>
+
+    <div class="row">
+
+        <!-- LOCAL INFORMATION -->
+        <div class="col-md-12">
+            <div class="well">
+                <h3><span class="fa fa-user"></span> Local</h3>
+
+                    <p>
+                        <strong>id</strong>: <%= user._id %><br>
+                        <strong>email</strong>: <%= user.local.email %><br>
+                        <strong>password</strong>: <%= user.local.password %>
+                    </p>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center">
+            <a href="/logout" class="btn btn-warning btn-sm"><span class="fa fa-user-o"></span> Logout</a>
+    </div>
+
+</div>
+</body>
+</html>
