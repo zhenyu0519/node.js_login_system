@@ -30,8 +30,8 @@ require('./config/passport')(passport);
 app.use(morgan('dev'));
 app.use(cookieParser());
 //use this instead of app.use(bodyParser())
-app.use(bodyParser.urlencoded({extended:false}))
-app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended:false}));
+app.use(bodyParser.json());
 
 
 //use the ejs template as view engine
