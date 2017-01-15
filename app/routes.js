@@ -1,42 +1,44 @@
+//export the module
 module.exports = function(app,passport){
-	//show home pages
+	//when direct to the home page, response will render the index.ejs template
 	app.get('/', function(req,res){
-		//load the index.ejs file
 		res.render('index.ejs');
 	});
 
-	//show login form
+	//when direct to the login page, response will render the login.ejs template
 	app.get('/login', function(req,res){
 		//render the page and pass in any flash data if exists
 		res.render('login.ejs',{message: req.flash('loginMessage')});
 	});
 
 	//process the login form
-	// app.post('/login', do all passport stuff here);
 	app.post('/login', passport.authenticate('local-login', {
-        successRedirect : '/profile', // redirect to the secure profile section
-        failureRedirect : '/login', // redirect back to the signup page if there is an error
-        failureFlash : true // allow flash messages
+        // redirect to the secure profile section if success
+        successRedirect : '/profile', 
+        // redirect back to the login page if there is an error
+        failureRedirect : '/login', 
+        // allow flash messages
+        failureFlash : true 
     }));
 
+	//when direct to the signup page, response will render the signup.ejs template
 	app.get('/signup', function(req,res){
 		res.render('signup.ejs', {message:req.flash('signupMessage')});
 	});
 
 	//process the signup form
-	// app.post('/signup.ejs', do all our passport stuff here);
 	app.post('/signup', passport.authenticate('local-signup', {
-        successRedirect : '/profile', // redirect to the secure profile section
-        failureRedirect : '/signup', // redirect back to the signup page if there is an error
-        failureFlash : true // allow flash messages
+        successRedirect : '/profile', 
+        failureRedirect : '/signup', 
+        failureFlash : true 
     }));
 
-	//This is protected so you have to be logged in to visit
+	//when direct to the profile page, you have to logged in
 	app.get('/profile', isLoggedIn, function(req,res){
 		res.render('profile.ejs',{user:req.user});
 	});
 
-	//log out
+	//when log out, rediect to the home page
 	app.get('/logout', function(req,res){
 		req.logout();
 		res.redirect('/');
@@ -44,6 +46,7 @@ module.exports = function(app,passport){
 
 }
 
+//check if the users is logged
 function isLoggedIn(req, res, next){
 	if(req.isAuthenticated()){
 		return next();
